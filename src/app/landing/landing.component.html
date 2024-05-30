@@ -1,0 +1,29 @@
+<mat-toolbar color="primary">
+  <span></span>
+</mat-toolbar>
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav mode="side" opened class="sidenav">
+    <mat-nav-list>
+      <mat-nav-list>
+        <mat-list-item (click)="selectComponent('whetherEvent')">Whether Event</mat-list-item>
+        <mat-list-item (click)="selectComponent('caseHistory')">Case History</mat-list-item>
+        <mat-list-item (click)="selectComponent('travalAddress')">Traval Address</mat-list-item>
+      </mat-nav-list>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="main-content">
+    <div class="content-wrapper">
+      <h2>Selected Item: {{ selectedComponent }}</h2>
+      <ng-container *ngIf="selectedComponent === 'whetherEvent'">
+        <app-search></app-search>
+      </ng-container>
+      <ng-container *ngIf="selectedComponent === 'caseHistory'">
+        <app-search></app-search>
+      </ng-container>
+      <ng-container *ngIf="selectedComponent === 'travalAddress'">
+        <app-search></app-search>
+      </ng-container>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

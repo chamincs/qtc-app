@@ -1,0 +1,15 @@
+.sidenav-container {
+  height: 100vh;
+}
+
+.sidenav {
+  width: 300px;
+}
+
+.main-content {
+  padding: 20px;
+}
+
+mat-divider {
+  margin: 10px 0;
+}

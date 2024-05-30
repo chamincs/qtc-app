@@ -1,0 +1,57 @@
+<div class="modal-header">
+  <h5 class="modal-title">Add Weather Event</h5>
+  <button type="button" class="btn-close" aria-label="Close" (click)="onClose()"></button>
+</div>
+<div class="modal-body">
+<div mat-dialog-content [formGroup]="form">
+  <div class="mb-3">
+  <mat-form-field>
+    <input   placeholder="Country"  [formControl]="countryControl" [matAutocomplete]="cauto"  matInput  >
+  </mat-form-field>
+    <mat-autocomplete #cauto="matAutocomplete"  >
+
+      <mat-option *ngFor="let country of filteredCountries | async" [value]="country.countryCode ">
+        {{country.countryName}}
+      </mat-option>
+    </mat-autocomplete>
+  </div>
+  <div class="mb-3">
+    <mat-form-field>
+      <input   placeholder="Weather Type"  [formControl]="weatherTypeControl" [matAutocomplete]="auto"  matInput  >
+    </mat-form-field>
+      <mat-autocomplete #auto="matAutocomplete" >
+        <mat-option *ngFor="let weatherType of filterWeatherType | async" [value]="weatherType.weatherTypeCode">
+          {{weatherType.weatherTypeName}}
+        </mat-option>
+      </mat-autocomplete>
+  </div>
+  <div class="mb-3">
+      <mat-form-field>
+        <input   placeholder="Name"  [formControl]="eventName"   matInput  >
+      </mat-form-field>
+    </div>
+    <div class="mb-3">
+      <mat-form-field>
+        <input   placeholder="Description"  [formControl]="description"   matInput  >
+      </mat-form-field>
+    </div>
+    <div class="mb-3">
+      <mat-form-field>
+        <input matInput  [matDatepicker]="pickerst" [formControl]="startDate"  placeholder="Start Date">
+    <mat-datepicker-toggle matSuffix [for]="pickerst"></mat-datepicker-toggle>
+    <mat-datepicker #pickerst></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="mb-3">
+  <mat-form-field>
+    <input matInput  [matDatepicker]="pickerend" [formControl]="endDate"  placeholder="End Date">
+    <mat-datepicker-toggle matSuffix [for]="pickerend"></mat-datepicker-toggle>
+    <mat-datepicker #pickerend></mat-datepicker>
+  </mat-form-field>
+</div>
+</div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onClose()">Close</button>
+  <button mat-button (click)="onSubmit()" [disabled]="form.invalid">Submit</button>
+</div>
